@@ -46,16 +46,30 @@ public class Main {
 	}
 
 	private static void displayWelcomeMessage() {
-		System.out.println("Welcome to OnAnOn - Your Personal Ride-Hailing Application");
+		System.out.println();
+		System.out.println("🙏🏻 Welcome to OnAnOn - Your Personal Ride-Hailing Application 🚗");
 	}
 
 	private static void displayMainMenu() {
-		System.out.println("\nPlease select an option:");
-		System.out.println("1. Admin Login");
-		System.out.println("2. Login as a Passenger");
-		System.out.println("3. Signup as a Passenger");
-		System.out.println("4. Exit");
-		System.out.print("Enter your choice: ");
+		String horizontalLine = "+----------------------------+";
+		String emptyLine = "|                            |";
+		String title = "|  Please select an option:  |";
+		String option1 = "|  1. Admin Login            |";
+		String option2 = "|  2. Login as a Passenger   |";
+		String option3 = "|  3. Signup as a Passenger  |";
+		String option4 = "|  4. Exit                   |";
+		String prompt = "|  Enter your choice:        |";
+
+		System.out.println(horizontalLine);
+		System.out.println(emptyLine);
+		System.out.println(title);
+		System.out.println(option1);
+		System.out.println(option2);
+		System.out.println(option3);
+		System.out.println(option4);
+		System.out.println(prompt);
+		System.out.println(emptyLine);
+		System.out.println(horizontalLine);
 	}
 
 	private static void login() {
@@ -115,35 +129,34 @@ public class Main {
 	}
 
 	private static void adminMenu() {
-	    while (true) {
-	        displayAdminMenu();
-	        int choice = scanner.nextInt();
-	        scanner.nextLine();
+		while (true) {
+			displayAdminMenu();
+			int choice = scanner.nextInt();
+			scanner.nextLine();
 
-	        switch (choice) {
-	            case 1:
-	                addDriver();
-	                break;
-	            case 2:
-	                editDriver();
-	                break;
-	            case 3:
-	                removeDriver();
-	                break;
-	            case 4:
-	                showDrivers();
-	                break;
-	            case 5:
-	                showPassengers();
-	                break;
-	            case 6:
-	                return;
-	            default:
-	                System.out.println("Invalid choice. Please try again.");
-	        }
-	    }
+			switch (choice) {
+			case 1:
+				addDriver();
+				break;
+			case 2:
+				editDriver();
+				break;
+			case 3:
+				removeDriver();
+				break;
+			case 4:
+				showDrivers();
+				break;
+			case 5:
+				showPassengers();
+				break;
+			case 6:
+				return;
+			default:
+				System.out.println("Invalid choice. Please try again.");
+			}
+		}
 	}
-
 
 	private static void showDrivers() {
 		Map<Integer, Driver> drivers = driverService.getAllDrivers();
@@ -153,8 +166,8 @@ public class Main {
 			System.out.println("List of Drivers:");
 			for (Driver driver : drivers.values()) {
 				System.out.println("                             ");
-				System.out.println("Driver Name: " + driver.getDriverName());
-				System.out.println("Vehicle Type: " + driver.getVehicleType());
+				System.out.println("Driver Name:          " + driver.getDriverName());
+				System.out.println("Vehicle Type:         " + driver.getVehicleType());
 				System.out.println("Vehicle Registration: " + driver.getVehicleRegistration());
 				System.out.println("-----------------------------");
 			}
@@ -162,14 +175,31 @@ public class Main {
 	}
 
 	private static void displayAdminMenu() {
-		System.out.println("\nAdmin Menu:");
-		System.out.println("1. Add a Driver");
-		System.out.println("2. Edit Driver Details");
-		System.out.println("3. Remove a Driver");
-		System.out.println("4. Show all Drivers");
-		System.out.println("5. Show all Passengers");
-		System.out.println("5. Logout");
-		System.out.print("Enter your choice: ");
+	    String horizontalLine = "+--------------------------+";
+	    String emptyLine = "|                          |";
+	    String title = "|      Admin Menu:         |";
+	    String option1 = "|  1. Add a Driver         |";
+	    String option2 = "|  2. Edit Driver Details  |";
+	    String option3 = "|  3. Remove a Driver      |";
+	    String option4 = "|  4. Show all Drivers     |";
+	    String option5 = "|  5. Show all Passengers  |";
+	    String option6 = "|  6. Logout               |";
+	    String prompt = "|  Enter your choice:      |";
+
+	    System.out.println(horizontalLine);
+	    System.out.println(emptyLine);
+	    System.out.println(title);
+//	    System.out.println(emptyLine);
+	    System.out.println(option1);
+	    System.out.println(option2);
+	    System.out.println(option3);
+	    System.out.println(option4);
+	    System.out.println(option5);
+	    System.out.println(option6);
+//	    System.out.println(emptyLine);
+	    System.out.println(prompt);
+	    System.out.println(emptyLine);
+	    System.out.println(horizontalLine);
 	}
 
 	private static void addDriver() {
@@ -182,7 +212,7 @@ public class Main {
 
 		Driver driver = new Driver(driverName, vehicleType, vehicleRegistration);
 		driverService.addDriver(driver);
-		System.out.println("Driver added successfully!");
+//		System.out.println("Driver added successfully!");
 	}
 
 	private static void editDriver() {
@@ -193,8 +223,9 @@ public class Main {
 		if (driver != null) {
 			System.out.println("Driver found!");
 			System.out.println("Current details:");
-			System.out.println("Driver Name: " + driver.getDriverName());
-			System.out.println("Vehicle Type: " + driver.getVehicleType());
+			System.out.println();
+			System.out.println("Driver Name:     " + driver.getDriverName());
+			System.out.println("Vehicle Type:    " + driver.getVehicleType());
 			System.out.println("Vehicle Registration: " + driver.getVehicleRegistration());
 
 			System.out.print("Enter new driver name (leave blank to keep current): ");
@@ -227,30 +258,31 @@ public class Main {
 		Driver driver = driverService.getDriverByUsername(username);
 		if (driver != null) {
 			driverService.removeDriver(driver);
-			System.out.println("Driver removed successfully!");
+//			System.out.println("Driver removed successfully!");
 		} else {
 			System.out.println("Driver not found. Please try again.");
 		}
 	}
 
 	private static void showPassengers() {
-	    Map<Integer, Passenger> passengers = customerService.getPassengerData();
-	    if (passengers.isEmpty()) {
-	        System.out.println("No passengers found.");
-	    } else {
-	        System.out.println("List of Passengers:");
-	        for (Passenger passenger : passengers.values()) {
-	            System.out.println("Passenger Name: " + passenger.getFirstName() + " " + passenger.getLastName());
-	            System.out.println("Username: " + passenger.getUsername());
-	            System.out.println("Address: " + passenger.getAddress());
-	            System.out.println("Mobile Number: " + passenger.getMobileNo());
-	            System.out.println("-----------------------------");
-	        }
-	    }
+		Map<Integer, Passenger> passengers = customerService.getPassengerData();
+		if (passengers.isEmpty()) {
+			System.out.println("No passengers found.");
+		} else {
+			System.out.println("List of Passengers:");
+			for (Passenger passenger : passengers.values()) {
+				System.out.println();
+				System.out.println("Passenger Name: " + passenger.getFirstName() + " " + passenger.getLastName());
+				System.out.println("Username:       " + passenger.getUsername());
+				System.out.println("Address:        " + passenger.getAddress());
+				System.out.println("Mobile Number:  " + passenger.getMobileNo());
+				System.out.println("-----------------------------");
+			}
+		}
 	}
-	
-	
+
 	private static void processPassengerRequest(Passenger passenger) {
+		System.out.println();
 		System.out.print("Enter your pickup location: ");
 		String pickupLocation = scanner.nextLine();
 		System.out.print("Enter your destination: ");
@@ -260,16 +292,27 @@ public class Main {
 
 		double fare = calculateFare(distance);
 		System.out.println("Total fare: Rs" + fare);
+		System.out.println();
 
 		System.out.print("Enter 'confirm' to book the ride or 'cancel' to cancel: ");
 		String choice = scanner.next();
 		scanner.nextLine();
 
+//		if (choice.equalsIgnoreCase("confirm")) {
+//			System.out.println("Booking the ride...");
+//		} else {
+//			System.out.println("Ride booking cancelled.");
+//		}
+
+		System.out.println();
 		if (choice.equalsIgnoreCase("confirm")) {
-			System.out.println("Booking the ride...");
+
+			System.out.println("Your ride has been successfully booked. We will notify you through a notification.");
 		} else {
-			System.out.println("Ride booking cancelled.");
+			System.out.println("Your ride booking has been cancelled. We apologize for any inconvenience caused.");
 		}
+		System.out.println();
+		System.out.println("Thank-You For Using OnAnOn  (❁´◡`❁)");
 	}
 
 	private static double calculateFare(double distance) {
